@@ -1,4 +1,4 @@
-year,lap_time_seconds
-2022,96.575
-2023,82.746
-2024,72.303
+year,lap_time_seconds,teammate_time,constructorId
+2022,96.575,94.49199999999999,213
+2023,82.746,83.137,213
+2024,72.303,72.178,215

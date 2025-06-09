@@ -1,4 +1,4 @@
-year,lap_time_seconds
-2014,125.591
-2015,107.655
-2016,106.744
+year,lap_time_seconds,teammate_time,constructorId
+2014,125.591,125.819,131
+2015,107.655,107.197,131
+2016,106.744,110.033,131

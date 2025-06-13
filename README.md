@@ -20,7 +20,14 @@
         <li><a href="#data-preprocessing">Data Preprocessing</a></li>
       </ul>
     </li>
-    <li><a href="#model-architecture">Model Architecture</a></li>
+    <li>
+      <a href="#model-architecture">Model Architecture</a>
+      <ul>
+        <li><a href="#input-preprocessing">Input Presprocessing</a></li>
+        <li><a href="#data-preprocessing">Data Preprocessing</a></li>
+      </ul>
+    </li>
+    </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -72,8 +79,18 @@ Neural networks perform best when input features are on a similar scale, typical
 3. `constructorId` → `MinMaxScaler (0 to 1)`
 4. `lap_time_seconds` (Target) → `MinMaxScaler (-1 to 1)`
 
+### Neural Network
+The architecture is a 3-layer feedforward network with Parametric ReLU activations and a `tanh` output for scaled regression. We have choosen a **lightweight** architecture because our dataset is small (at max 6-10 data points in every combination csv). PReLU is more expressive for smallm datasets compared to ReLU. 
 
-<!-- USAGE EXAMPLES -->
+| Layer No. | Layer Type   | Input Size | Output Size | Activation | Description                                      |
+|-----------|--------------|------------|-------------|------------|--------------------------------------------------|
+| 1         | Linear       | 3          | 8           | PReLU      | First hidden layer; maps 3 input features to 8   |
+| 2         | Linear       | 8          | 6           | PReLU      | Second hidden layer for deeper representation    |
+| 3         | Linear       | 6          | 1           | Tanh       | Output layer to predict lap time in scaled form  |
+
+The **Tanh at output** matches the normalized target range `[-1, 1]`, enabling smoother regression.
+
+
 ## Usage
 
 Use this space to show useful examples of how a project can be used. For course projects, include which file to execute and the format of any input variables.

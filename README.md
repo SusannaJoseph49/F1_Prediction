@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/catiaspsilva/README-template">
+  <a href="">
     <img src="Images/f1logo.jpg" alt="Logo" width="250" height="250">
   </a>
   <h3 align="center">Formula 1 Time Series Lap time Predictor</h3>
@@ -16,8 +16,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#dependencies">Dependencies</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#datasets">Datasets</a></li>
+        <li><a href="#data-preprocessing">Data Preprocessing</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -40,18 +40,24 @@ We aim to predict qualifying lap times in Formula 1 using a driver–circuit spe
 
 
 ## Getting Started
-
-In this section you should provide instructions on how to use this repository to recreate your project locally.
+Formula 1, despite being a proprietary and commercialized sport, has a surprisingly rich and open dataset ecosystem available to developers, analysts, and fans. Thanks to community-driven efforts and official data initiatives, you can access decades of detailed historical data on drivers, circuits, lap times, pit stops, qualifying results, and more.
 
 ### Datasets
 
-The historical Formula 1 data was pulled from the open source dataset avaliable on kaggle. [Kaggle dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).
+The historical Formula 1 data was pulled from the [open source dataset avaliable on kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).
 
-The 2025 data for the ongoing season was taken from the official [F1 website](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) for testing purposes. [Australia](https://www.formula1.com/en/results/2025/races/1254/australia/qualifying), [China](https://www.formula1.com/en/results/2025/races/1255/china/qualifying), [Japan](https://www.formula1.com/en/results/2025/races/1256/japan/qualifying), [Saudi Arabia](https://www.formula1.com/en/results/2025/races/1258/saudi-arabia/qualifying), [Miami](https://www.formula1.com/en/results/2025/races/1259/miami/qualifying), [Emilia-Romagna](https://www.formula1.com/en/results/2025/races/1260/emilia-romagna/qualifying) and [Monaco](https://www.formula1.com/en/results/2025/races/1261/monaco/qualifying) were taken into consideration. This [dataset](Data/2025_data/2025_qualifying_data.csv) can be expanded as the season progresses. 
+The 2025 data for the ongoing season was taken from the official [F1 website](https://www.formula1.com/) for testing purposes. [Australia](https://www.formula1.com/en/results/2025/races/1254/australia/qualifying), [China](https://www.formula1.com/en/results/2025/races/1255/china/qualifying), [Japan](https://www.formula1.com/en/results/2025/races/1256/japan/qualifying), [Saudi Arabia](https://www.formula1.com/en/results/2025/races/1258/saudi-arabia/qualifying), [Miami](https://www.formula1.com/en/results/2025/races/1259/miami/qualifying), [Emilia-Romagna](https://www.formula1.com/en/results/2025/races/1260/emilia-romagna/qualifying) and [Monaco](https://www.formula1.com/en/results/2025/races/1261/monaco/qualifying) were taken into consideration. This [dataset](Data/2025_data/2025_qualifying_data.csv) can be expanded as the season progresses. 
 
-### Alternative: Export your Environment
+### Data Preprocessing
 
-Alternatively, you can export your Python working environment, push it to your project's repository and allow users to clone it locally. This way, anyone can install it and they will have all dependencies needed. Here is how you export a copy of your Python environment:
+Each Formula 1 circuit has unique characteristics (e.g. corners, elevation, surface, length), and drivers have track-specific strengths. By isolating data to one driver + circuit combination the model learns just one pattern: how that specific driver improves or regresses on that track over time. 
+Another factor which influences the performances of various driver are the team they are with. The livery highly dictates the performance. So we include the team and temmate information also with each driver - circuit combination. 
+<a href="">
+    <img src="Images/ham.png" alt="ham">
+  </a>
+
+
+
 
   ```sh
   conda env export > requirements.yml

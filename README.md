@@ -2,36 +2,16 @@
 <br />
 <p align="center">
   <a href="https://github.com/catiaspsilva/README-template">
-    <img src="Images/f1logo.png" alt="Logo" width="150" height="150">
+    <img src="Images/f1logo.jpg" alt="Logo" width="250" height="250">
   </a>
-
   <h3 align="center">Formula 1 Time Series Lap time Predictor</h3>
-
-  <p align="center">
-    A README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/catiaspsilva/README-template/blob/main/images/docs.txt"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="#usage">View Demo</a>
-    ·
-    <a href="https://github.com/catiaspsilva/README-template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/catiaspsilva/README-template/issues">Request Feature</a>
-  </p>
 </p>
-
-
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about">About</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -54,30 +34,21 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-In this section you should describe your project, including any datasets you used and appropriate citations. You may refer to your project report or cite your paper for more detailed information.
+We aim to predict qualifying lap times in Formula 1 using a driver–circuit specific deep learning model. By leveraging historical F1 race data and modeling each driver’s performance at each circuit, we developed a specialized forecasting system that achieves high accuracy with an average error of just 0.20% for seen data and 1.25% for unseen data.
 
-[Here goes the title with hyperlink](https://github.com/catiaspsilva/README-template)
+[Full Project](https://github.com/SusannaJoseph49/F1_Prediction)
 
-You can include tables or images to summarize your results when and if appropriate.
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
 In this section you should provide instructions on how to use this repository to recreate your project locally.
 
-### Dependencies
+### Datasets
 
-Here, list all libraries, packages and other dependencies that need to be installed to run your project. Include library versions and how they should be installed if a special requirement is needed.
+The historical Formula 1 data was pulled from the open source dataset avaliable on kaggle. [Kaggle dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).
 
-For example, this is how you would list them:
-* Transformers 4.8.0
-  ```sh
-  conda install -c conda-forge transformers
-  ```
-* OpenCV 4.5.2
-  ```sh
-  conda install -c conda-forge opencv
-  ```
+The 2025 data for the ongoing season was taken from the official [F1 website](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) for testing purposes. [Australia](https://www.formula1.com/en/results/2025/races/1254/australia/qualifying), [China](https://www.formula1.com/en/results/2025/races/1255/china/qualifying), [Japan](https://www.formula1.com/en/results/2025/races/1256/japan/qualifying), [Saudi Arabia](https://www.formula1.com/en/results/2025/races/1258/saudi-arabia/qualifying), [Miami](https://www.formula1.com/en/results/2025/races/1259/miami/qualifying), [Emilia-Romagna](https://www.formula1.com/en/results/2025/races/1260/emilia-romagna/qualifying) and [Monaco](https://www.formula1.com/en/results/2025/races/1261/monaco/qualifying) were taken into consideration. This [dataset](Data/2025_data/2025_qualifying_data.csv) can be expanded as the season progresses. 
+
 ### Alternative: Export your Environment
 
 Alternatively, you can export your Python working environment, push it to your project's repository and allow users to clone it locally. This way, anyone can install it and they will have all dependencies needed. Here is how you export a copy of your Python environment:

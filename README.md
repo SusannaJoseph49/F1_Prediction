@@ -4,7 +4,7 @@
   <a href="">
     <img src="Images/f1logo.jpg" alt="Logo" width="250" height="250">
   </a>
-  <h3 align="center">Formula 1 Time Series Lap time Predictor</h3>
+  <h3 align="center">Formula 1 Time-Series Lap time Predictor</h3>
 </p>
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -20,7 +20,7 @@
         <li><a href="#data-preprocessing">Data Preprocessing</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#model-architecture">Model Architecture</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -34,7 +34,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-We aim to predict qualifying lap times in Formula 1 using a driver–circuit specific deep learning model. By leveraging historical F1 race data and modeling each driver’s performance at each circuit, we developed a specialized forecasting system that achieves high accuracy with an average error of just 0.20% for seen data and 1.25% for unseen data.
+We aim to predict qualifying lap times in Formula 1 using a driver–circuit specific deep learning model. By leveraging historical F1 race data and modeling each driver’s performance at each circuit, we developed a specialized forecasting system that achieves high accuracy with an average prediction deviation of just **0.20% for seen data** and **1.25% for unseen data**.
 
 [Full Project](https://github.com/SusannaJoseph49/F1_Prediction)
 
@@ -52,33 +52,26 @@ The 2025 data for the ongoing season was taken from the official [F1 website](ht
 
 Each Formula 1 circuit has unique characteristics (e.g. corners, elevation, surface, length), and drivers have track-specific strengths. By isolating data to one driver + circuit combination the model learns just one pattern: how that specific driver improves or regresses on that track over time. 
 Another factor which influences the performances of various driver are the team they are with. The livery highly dictates the performance. So we include the team and temmate information also with each driver - circuit combination. 
+
 <a href="">
     <img src="Images/ham.png" alt="ham">
-  </a>
+</a>
 
+A total of **[621 driver - circuit combinations](Data/driver_circuit_data)** were identified with more than 3 entries. 
 
+## Model Architecture
+We are to build a neural network model that predicts the lap times for any driver for any circuit given three core input features.
+1. **Year**: Captures car evolution, regulation changes, and performance over time.
+2. **Teammate**: Represents how competitive a teammate was under the same car/environment.
+3. **Constructor**: Encodes which F1 team (Mercedes, Ferrari, etc.) built the car.
 
+### Input Preprocessing
+Neural networks perform best when input features are on a similar scale, typically between 0 and 1. Here's how we handled each:
+1. `year` → `MinMaxScaler (0 to 1)`
+2. `teammate_time` → `MinMaxScaler (0 to 1)`
+3. `constructorId` → `MinMaxScaler (0 to 1)`
+4. `lap_time_seconds` (Target) → `MinMaxScaler (-1 to 1)`
 
-  ```sh
-  conda env export > requirements.yml
-  ```
-
-The user will be able to recreate it using:
-
-  ```sh
-  conda env create -f requirements.yml
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/catiaspsilva/README-template.git
-   ```
-2. Setup (and activate) your environment
-  ```sh
-  conda env create -f requirements.yml
-  ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -133,6 +126,3 @@ You can acknowledge any individual, group, institution or service.
 * [Loaders.css](https://connoratherton.com/loaders)
 * [Slick Carousel](https://kenwheeler.github.io/slick)
 
-## Thank you
-
-<!-- If this is useful: [![Buy me a coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg)](https://www.buymeacoffee.com/catiaspsilva) -->

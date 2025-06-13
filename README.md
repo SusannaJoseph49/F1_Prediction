@@ -101,22 +101,49 @@ The **Tanh at output** matches the normalized target range `[-1, 1]`, enabling s
 
 ### Training Strategy
 A separate model is trained for every driver circuit combination. `SmoothL1Loss` loss function is applied to minimize loss and `Adam optimizer` is applied to update weights with a learning rate `lr = 0.01`. 
+
 Each model is trained for 500 epochs and we are doing **full-batch testing** as our dataset is small.
+
 Loss is computed and backpropogated and weights are updated using the optimizer. 
 The **output** is a trained model and fitted scalars for the inputs (`year_scaler`, `lap_time_scaler`, `teammate_scaler`, `constructor_scaler`). 
 
 ### Prediction Strategy
 After training, the model is used to predict the **lap time for a specific year** (e.g., `2022` or `2025`) for that driver-circuit pair. Baseds on if the year is in the training kaggle dataset or not we follow different code setups. 
+
 The inputs are normalized using previously fitted scalers and the models prediction is inverse transformed back to actual lap-time units. 
+
 The deviation is calculated as - 
 \[
   \text{Deviation} = \frac{|\text{Predicted} - \text{Actual}|}{\text{Actual}} \times 100
 \]
 
-<!-- ROADMAP -->
-## Roadmap
+## Results
 
-See the [open issues](https://github.com/catiaspsilva/README-template/issues) for a list of proposed features (and known issues).
+| Year | MAE   | RMSE  | R² Score | MAPE  | SMAPE |
+|------|-------|-------|----------|--------|--------|
+| 2014 | 0.173 | 0.299 | 0.9997   | 0.19% | 0.19% |
+| 2015 | 0.177 | 0.347 | 0.9993   | 0.19% | 0.19% |
+| 2016 | 0.170 | 0.327 | 0.9992   | 0.19% | 0.19% |
+| 2017 | 0.196 | 0.336 | 0.9992   | 0.22% | 0.22% |
+| 2018 | 0.203 | 0.320 | 0.9992   | 0.24% | 0.24% |
+| 2019 | 0.178 | 0.297 | 0.9993   | 0.21% | 0.21% |
+| 2020 | 0.225 | 0.353 | 0.9990   | 0.27% | 0.27% |
+| 2021 | 0.155 | 0.283 | 0.9996   | 0.19% | 0.19% |
+| 2022 | 0.137 | 0.307 | 0.9994   | 0.16% | 0.16% |
+| 2023 | 0.150 | 0.293 | 0.9993   | 0.18% | 0.18% |
+| 2024 | 0.155 | 0.306 | 0.9993   | 0.19% | 0.19% |
+
+The meaning and abreviations of these metrics are given below. 
+
+| Abbreviation | Full Form                     | What It Measures                                                                 | Ideal Value          |
+|--------------|-------------------------------|----------------------------------------------------------------------------------|----------------------|
+| **MAE**      | Mean Absolute Error            | The average of the absolute differences between predicted and actual values.     | 0 (lower is better)  |
+| **RMSE**     | Root Mean Squared Error        | Like MAE, but penalizes large errors more heavily (squares the errors).          | 0 (lower is better)  |
+| **R² Score** | Coefficient of Determination   | Shows how well predictions explain the variance in the actual data.              | 1 (higher is better) |
+| **MAPE**     | Mean Absolute Percentage Error | MAE expressed as a percentage of actual values. Easy to interpret across scales. | 0% (lower is better) |
+| **SMAPE**    | Symmetric MAPE                 | Similar to MAPE, but accounts for both over- and under-predictions symmetrically.| 0% (lower is better) |
+
+
 
 <!-- CONTRIBUTING -->
 ## Contributing

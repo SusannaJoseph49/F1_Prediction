@@ -24,11 +24,17 @@
       <a href="#model-architecture">Model Architecture</a>
       <ul>
         <li><a href="#input-preprocessing">Input Presprocessing</a></li>
-        <li><a href="#data-preprocessing">Data Preprocessing</a></li>
+        <li><a href="#neural-network">Neural Network</a></li>
       </ul>
     </li>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li>  
+      <a href="#training-and-prediction">Training and Prediction</a>
+      <ul>
+        <li><a href="#training-strategy">Training Strategy</a></li>
+        <li><a href="#prediction-strategy">Prediction Strategy</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#authors">Authors</a></li>
@@ -91,13 +97,21 @@ The architecture is a 3-layer feedforward network with Parametric ReLU activatio
 The **Tanh at output** matches the normalized target range `[-1, 1]`, enabling smoother regression.
 
 
-## Usage
+## Training and Prediction
 
-Use this space to show useful examples of how a project can be used. For course projects, include which file to execute and the format of any input variables.
+### Training Strategy
+A separate model is trained for every driver circuit combination. `SmoothL1Loss` loss function is applied to minimize loss and `Adam optimizer` is applied to update weights with a learning rate `lr = 0.01`. 
+Each model is trained for 500 epochs and we are doing **full-batch testing** as our dataset is small.
+Loss is computed and backpropogated and weights are updated using the optimizer. 
+The **output** is a trained model and fitted scalars for the inputs (`year_scaler`, `lap_time_scaler`, `teammate_scaler`, `constructor_scaler`). 
 
-Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Prediction Strategy
+After training, the model is used to predict the **lap time for a specific year** (e.g., `2022` or `2025`) for that driver-circuit pair. Baseds on if the year is in the training kaggle dataset or not we follow different code setups. 
+The inputs are normalized using previously fitted scalers and the models prediction is inverse transformed back to actual lap-time units. 
+The deviation is calculated as - 
+\[
+  \text{Deviation} = \frac{|\text{Predicted} - \text{Actual}|}{\text{Actual}} \times 100
+\]
 
 <!-- ROADMAP -->
 ## Roadmap

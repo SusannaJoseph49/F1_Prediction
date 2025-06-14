@@ -55,6 +55,10 @@
 
 We aim to predict qualifying lap times in Formula 1 using a driver–circuit specific deep learning model. By leveraging historical F1 race data and modeling each driver’s performance at each circuit, we developed a specialized forecasting system that achieves high accuracy with an average prediction deviation of just **0.20% for seen data** and **1.09% for unseen data**.
 
+<a href="">
+    <img src="Images/2022.png" alt="ham">
+</a>
+
 [Full Project](https://github.com/SusannaJoseph49/F1_Prediction)
 
 

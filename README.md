@@ -35,9 +35,15 @@
         <li><a href="#prediction-strategy">Prediction Strategy</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#authors">Authors</a></li>
+    <li>
+      <a href="#results">Results</a>
+      <ul>
+        <li><a href="#for-seen-data">For Seen Data</a></li>
+        <li><a href="#for-unseen-data">For Unseen Data</a></li>
+        <li><a href="#abbreviations-and-significance">Abbreviations and Significance</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -47,7 +53,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-We aim to predict qualifying lap times in Formula 1 using a driver–circuit specific deep learning model. By leveraging historical F1 race data and modeling each driver’s performance at each circuit, we developed a specialized forecasting system that achieves high accuracy with an average prediction deviation of just **0.20% for seen data** and **1.25% for unseen data**.
+We aim to predict qualifying lap times in Formula 1 using a driver–circuit specific deep learning model. By leveraging historical F1 race data and modeling each driver’s performance at each circuit, we developed a specialized forecasting system that achieves high accuracy with an average prediction deviation of just **0.20% for seen data** and **1.09% for unseen data**.
 
 [Full Project](https://github.com/SusannaJoseph49/F1_Prediction)
 
@@ -118,6 +124,8 @@ The deviation is calculated as -
 \]
 
 ## Results
+### For Seen Data
+The years 2014-2024 are used for training
 
 | Year | MAE   | RMSE  | R² Score | MAPE  | SMAPE |
 |------|-------|-------|----------|--------|--------|
@@ -133,6 +141,14 @@ The deviation is calculated as -
 | 2023 | 0.150 | 0.293 | 0.9993   | 0.18% | 0.18% |
 | 2024 | 0.155 | 0.306 | 0.9993   | 0.19% | 0.19% |
 
+### For Unseen Data
+
+| Year | MAE   | RMSE  | R² Score | MAPE  | SMAPE |
+|------|-------|-------|----------|--------|--------|
+| 2025 | 1.09  | 1.325 | 0.9638   | 1.09% | 1.09% |
+
+
+### Abbreviations and Significance
 The meaning and abreviations of these metrics are given below. 
 
 | Abbreviation | Full Form                     | What It Measures                                                                 | Ideal Value          |
@@ -144,43 +160,10 @@ The meaning and abreviations of these metrics are given below.
 | **SMAPE**    | Symmetric MAPE                 | Similar to MAPE, but accounts for both over- and under-predictions symmetrically.| 0% (lower is better) |
 
 
+## Conclusion
+This project successfully demonstrates the feasibility of using a lightweight neural network model to predict Formula 1 qualifying lap times based on a combination of temporal, teammate, and constructor features. By training a separate model for each unique driver-circuit pair, the approach captures fine-grained performance dynamics that account for driver familiarity and track-specific characteristics.
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-<!-- Authors -->
-## Authors
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-
-<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-
-You can acknowledge any individual, group, institution or service.
-* [Catia Silva](https://faculty.eng.ufl.edu/catia-silva/)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
+* [ResearchGate - Deep Neural Network-based lap time forecasting of Formula 1 Racing
+](https://www.researchgate.net/publication/379012640_Deep_Neural_Network-based_lap_time_forecasting_of_Formula_1_Racing)
 
